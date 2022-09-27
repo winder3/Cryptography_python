@@ -1,0 +1,10 @@
+from Crypto.PublicKey import RSA
+key = RSA.generate(2048)
+f = open('privatekey.pem','wb')
+f.write(key.export_key('PEM'))
+f.close()
+f = open('privatekey.pem','r')
+privatekey = RSA.import_key(f.read())
+g=open('publickey.pem','wb')
+g.write(key.public_key().export_key('PEM'))
+g.close()
